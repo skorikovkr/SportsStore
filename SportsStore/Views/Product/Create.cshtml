@@ -1,0 +1,13 @@
+﻿@model Product
+
+@{
+    Layout = "_Layout";
+}
+
+<form method="post" asp-action="Create" class="form-control flex-column">
+    <label asp-for="Name" class="form-group"></label>
+    <input asp-for="Name" class="form-group"/>
+    <label asp-for="Price" class="form-group"></label>
+    <input asp-for="Price" class="form-group"/>
+    <button class="btn btn-primary align-self-center" type="submit">Create</button>
+</form>

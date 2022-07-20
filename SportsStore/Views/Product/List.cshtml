@@ -1,0 +1,24 @@
+﻿@using System.Reflection;
+
+@model ProductListViewModel
+
+@{
+    Layout = "_Layout";
+    var productProperties = typeof(Product).GetProperties(BindingFlags.Instance & BindingFlags.Public);
+}
+
+@foreach (var p in Model.Products)
+{
+    <div class="card" style="width: 18rem; margin: 20px">
+        <div class="card-body">
+            <h3 class="card-title">@p.Name</h3>
+            <p class="card-text">@p.Description</p>
+            @{
+                var price = (p.Price ?? 0).ToString("c");
+                    <p class="card-text text-primary">@price</p>
+            }
+        </div>
+    </div>
+}
+<div page-model="@Model.PagingInfo" page-action="List"></div>
+<a asp-action="Create" asp-controller="Product" class="btn btn-primary">Create</a>
